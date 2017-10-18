@@ -57,13 +57,22 @@ bot.on('chat', function(data) {
 		autobob = !autobob;
 		if(autobob)
 		{
-			bot.sendChat('Yeah buddy');	
+			bot.sendChat('Yeah, ok, maybe');	
 			bot.woot();
 		}
 		else
 		{
+			bot.sendChat('Nah, well, ok, maybe');
 			bot.woot()
 		}
+	}
+	else if (data.message == 'go to vibes')
+	{
+		bot.connect('vibe-vibrations');
+	}
+	else if (data.message == 'go to temple')
+	{
+		bot.connect('shaolin-temple-underground');
 	}
 	else if(data.message == 'fuck you')
 	{
