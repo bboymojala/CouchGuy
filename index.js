@@ -3,13 +3,13 @@ var autobob = false;
 
 var PlugAPI = require('plugapi');
 var bot = new PlugAPI({
-//     email: 'panda@mogasm.com',
+//     email: 'planda@mogasm.com',
 	email: 'couchguy@mogasm.com',
     password: 'robot420'
 });
 console.log(bot.getMedia());
 
-bot.connect('shaolin-temple-underground'); // The part after https://plug.dj
+bot.connect('vibe-vibrations'); // The part after https://plug.dj
 
 bot.on('roomJoin', function(room) {
     console.log("Joined " + room);
