@@ -1,6 +1,10 @@
 
 var autobob = false;
 
+var bonus = ["chuuuuuch. tabernacle. pillar. sermon. amen", "4 out of 5 dentists think this shit is whack", "AWWW SCHITT!!"];
+var usedbonus = [];
+
+
 var PlugAPI = require('plugapi');
 var bot = new PlugAPI({
 //     email: 'planda@mogasm.com',
@@ -46,9 +50,9 @@ bot.on('chat', function(data) {
      		
 	if (data.message == 'couch guy ?')
 	{
-		bot.sendChat('gaaa!!, gank, bonus, dat ass.  Imma get more, dont worry bout that');	
+		bot.sendChat('gaaa!!, gank, bonus, Imma get more, dont worry bout that');	
 	}
-	else if (data.message == 'smoke?')
+	else if (data.message == 'couch')
 	{
 		bot.sendChat('Got cheetoes?');	
 	}
@@ -86,25 +90,62 @@ bot.on('chat', function(data) {
 	{
 		bot.grab();
 	}
-	else if (data.message == "nice")
+	else if (data.message == "nice" || data.message == "bounce" || data.message.includes("<3"))
 	{
 		bot.woot();
+	}
+	else if(data.message == 'test' && !data.from.username.includes("BBoy Mo"))
+	{
+		bot.sendChat('testes');
+	}
+	else if(data.message == 'test' && data.from.username.includes("BBoy Mo"))
+	{
+		bot.sendChat("hi!")
+
+	}
+	else if (data.message.includes("addbonus "))
+	{
+		if(data.from.username.includes("BBoy Mo") || data.from.username.includes("RedEyeJedi") )
+		{
+			var newbonus = data.message.replace("addbonus ", "");
+			if(newbonus.length > 2)
+			{
+				bonus.push(newbonus);
+			}
+			else
+			{
+				bot.sendChat("Uh.. nothing written there son")
+			}
+
+		}
+		else
+		{
+			bot.sendChat('Naw. just..   naw..');
+		}
 	}
 	else if(data.message == 'bonus')
 	{
 		bot.woot();
-		var fs = require('fs');
-		var array = fs.readFileSync("C:\bot\bonus.txt").toString().split("\n");
-		var arraylength = array.length;
 		
-		var randomNumberBetween0and50 = Math.floor(Math.random() * 675);
-		
-		bot.sendChat(array[randomNumberBetween0and50]);	
+		var bonusnum = Math.floor(Math.random() * (bonus.length-1 - 0 + 1)) + 0;
+		var thisbonus = bonus[bonusnum];
+
+		bot.sendChat(thisbonus);	
+
+		bonus.pop(thisbonus);
+		usedbonus.push(thisbonus);
+
+		if(bonus.length == 0)
+		{
+			bonus = usedbonus;
+			usedbonus = [];
+		}
 		
 	}
 	else if(data.message == 'get up couch guy')
 	{
-			bot.addToWaitList();
+		bot.sendChat("No");
+			//bot.addToWaitList();
 	}
 	else if (data.type == 'emote')
         console.log(data.from + data.message);
