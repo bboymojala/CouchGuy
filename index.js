@@ -70,14 +70,6 @@ bot.on('chat', function(data) {
 			bot.woot()
 		}
 	}
-	else if (data.message == 'go to vibes')
-	{
-		bot.connect('vibe-vibrations');
-	}
-	else if (data.message == 'go to temple')
-	{
-		bot.connect('shaolin-temple-underground');
-	}
 	else if(data.message == 'fuck you')
 	{
 			bot.sendChat('fuck outta here');	
