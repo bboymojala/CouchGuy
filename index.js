@@ -7,12 +7,9 @@ var usedbonus = [];
 
 var PlugAPI = require('plugapi');
 var bot = new PlugAPI({
-//     email: 'planda@mogasm.com',
-//	email: 'couchguy@mogasm.com',
-//    password: 'robot420'
-	email: 'rawkus@mogasm.com',
-    password: 'S0rawkus'
-
+//     email: 'panda@mogasm.com',
+	email: 'couchguy@mogasm.com',
+    password: 'robot420'
 });
 console.log(bot.getMedia());
 
@@ -64,12 +61,11 @@ bot.on('chat', function(data) {
 		autobob = !autobob;
 		if(autobob)
 		{
-			bot.sendChat('Yeah, ok, maybe');	
+			bot.sendChat('Yeah buddy');	
 			bot.woot();
 		}
 		else
 		{
-			bot.sendChat('Nah, well, ok, maybe');
 			bot.woot()
 		}
 	}
@@ -85,42 +81,16 @@ bot.on('chat', function(data) {
 	{
 		bot.grab();
 	}
-	else if (data.message == "nice" || data.message == "bounce" || data.message.includes("<3"))
+	else if (data.message == "nice")
 	{
 		bot.woot();
-	}
-	else if(data.message == 'test' && !data.from.username.includes("BBoy Mo"))
-	{
-		bot.sendChat('testes');
-	}
-	else if(data.message == 'test' && data.from.username.includes("BBoy Mo"))
-	{
-		bot.sendChat("hi!")
-
-	}
-	else if (data.message.includes("addbonus "))
-	{
-		if(data.from.username.includes("BBoy Mo") || data.from.username.includes("RedEyeJedi") )
-		{
-			var newbonus = data.message.replace("addbonus ", "");
-			if(newbonus.length > 2)
-			{
-				bonus.push(newbonus);
-			}
-			else
-			{
-				bot.sendChat("Uh.. nothing written there son")
-			}
-
-		}
-		else
-		{
-			bot.sendChat('Naw. just..   naw..');
-		}
 	}
 	else if(data.message == 'bonus')
 	{
 		bot.woot();
+		var fs = require('fs');
+		var array = fs.readFileSync("C:\bot\bonus.txt").toString().split("\n");
+		var arraylength = array.length;
 		
 		var bonusnum = Math.floor(Math.random() * (bonus.length-1 - 0 + 1)) + 0;
 		var thisbonus = bonus[bonusnum];
