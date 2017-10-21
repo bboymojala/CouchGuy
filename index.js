@@ -8,8 +8,11 @@ var usedbonus = [];
 var PlugAPI = require('plugapi');
 var bot = new PlugAPI({
 //     email: 'planda@mogasm.com',
-	email: 'couchguy@mogasm.com',
-    password: 'robot420'
+//	email: 'couchguy@mogasm.com',
+//    password: 'robot420'
+	email: 'rawkus@mogasm.com',
+    password: 'S0rawkus'
+
 });
 console.log(bot.getMedia());
 
