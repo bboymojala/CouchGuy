@@ -6,12 +6,16 @@ var usedbonus = [];
 
 
 var PlugAPI = require('plugapi');
+
+//these should come from environment variables
 var bot = new PlugAPI({
 //     email: 'planda@mogasm.com',
 	email: 'couchguy@mogasm.com',
 	password: 'robot420'
 
 });
+
+
 console.log(bot.getMedia());
 
 bot.connect('vibe-vibrations'); // The part after https://plug.dj
